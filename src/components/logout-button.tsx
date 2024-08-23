@@ -19,9 +19,10 @@ const LogoutButton = () => {
   }
 
   return (
-    <Button type="button" onClick={signOut} variant="underline-destructive" width="sm">
-      <LogOut className="size-5" /> Sair
-    </Button>
+    <button type="button" onClick={signOut} className="flex gap-1 items-center text-red-800 text-sm hover:underline">
+      Sair
+      <LogOut className="size-4" />
+    </button>
   )
 }
 

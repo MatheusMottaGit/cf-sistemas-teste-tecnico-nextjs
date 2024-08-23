@@ -7,7 +7,6 @@ const buttonVariants = tv({
     variant: {
       default: "bg-teal-600 hover:bg-teal-600/90 text-zinc-50",
       destructive: "bg-red-500 hover:bg-red-500/90",
-      "underline-destructive": "bg-transparent border border-dashed border-red-700 hover:bg-red-700 hover:text-zinc-50 text-red-700"
     },
 
     width: {
