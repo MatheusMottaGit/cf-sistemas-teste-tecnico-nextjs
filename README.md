@@ -41,6 +41,6 @@ pnpm dev
 ```
 - Problemas:
 ```bash
-- Nas ações de deletar e editar, os dados da interface não atualizam imediatamente
+- Nas ações de criar, deletar e editar, os dados da interface não atualizam imediatamente
 - Em desenvolvimento, tudo funciona corretamente
 ```
