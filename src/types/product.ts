@@ -1,6 +1,7 @@
 export type Categories = "starter" | "main" | "dessert" | "drink"
 
 export type Product = {
+  id: string
   name: string
   category: Categories
   price: number

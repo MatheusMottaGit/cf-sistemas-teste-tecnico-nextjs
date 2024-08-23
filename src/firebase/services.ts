@@ -26,10 +26,17 @@ export async function readProducts(): Promise<(Product & { id: string })[]> {
   const productsCollection = collection(db, "products")
   const productsDocs = await getDocs(productsCollection)
 
-  const products: (Product & { id: string })[] = productsDocs.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data() as Product
-  }))
+  const products: (Product & { id: string })[] = productsDocs.docs.map((doc) => {
+    const data = doc.data() as Product
+    return {
+      id: doc.id,
+      name: data.name,
+      price: data.price,
+      category: data.category,
+      description: data.description,
+      isAvailable: data.isAvailable
+    }
+  })
 
   return products
 }
