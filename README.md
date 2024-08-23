@@ -28,3 +28,5 @@ pnpm dev
   - Telas de Login e Registro
   - Fluxo de autenticação
   - Tabela de produtos, e CRUD (create, read, update e delete)
+
+  ![alt text](image.png)
