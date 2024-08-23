@@ -9,10 +9,10 @@ const PrivateRouteMiddleware = ({ children }: { children: React.ReactNode }) => 
   const { user, isUserLoading } = useAuthContext()
 
   useEffect(() => {
-    if (!isUserLoading) {
-      if (!user) {
-        router.push("/auth/login")
-      }
+    if(user) {
+      router.push("/")
+    }else{
+      router.push("/auth/login")
     }
   }, [user, router, isUserLoading])
 

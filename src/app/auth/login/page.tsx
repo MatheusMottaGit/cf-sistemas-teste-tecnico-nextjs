@@ -26,7 +26,7 @@ const LoginPage = () => {
 
     setIsLogging(false)
 
-    toast.success("Conectado!.", {
+    toast.success("Conectado!", {
       className: "bg-zinc-950 text-zinc-50 border-zinc-700"
     })
     

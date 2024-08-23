@@ -9,5 +9,5 @@ export type Product = {
   isAvailable: boolean
 }
 
-export interface CreateProductRequest extends Product {}
+export interface CreateProductRequest extends Omit<Product, 'id'> {}
 export interface UpdateProductRequest extends Partial<Product> {}
