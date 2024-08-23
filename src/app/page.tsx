@@ -10,7 +10,7 @@ export default async function Home() {
 
   return (
     <div className="flex min-h-screen flex-col bg-zinc-950">
-      <header className="w-full px-16 h-14 flex items-center justify-between">
+      <header className="w-full px-16 h-14 flex items-center justify-between border-b border-zinc-700">
         <div className="bg-teal-500 p-1 shadow text-zinc-900 rounded-md">
           <Soup className="size-5" />
         </div>
@@ -18,7 +18,7 @@ export default async function Home() {
         <LogoutButton />
       </header>
 
-      <main className="flex-1 py-6 px-16 space-y-6">
+      <main className="flex-1 py-10 px-16 space-y-6">
         <div className="relative flex items-center gap-3">
           <h1 className="text-2xl text-zinc-50 font-semibold">Produtos</h1>
 
