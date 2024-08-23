@@ -1,9 +1,9 @@
 "use client"
 import { LogOut } from "lucide-react"
 import Button from "./default/button"
-import { logOut } from "@/firebase/log-out"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
+import { logOut } from "@/firebase/log-out"
 
 const LogoutButton = () => {
   const router = useRouter()
