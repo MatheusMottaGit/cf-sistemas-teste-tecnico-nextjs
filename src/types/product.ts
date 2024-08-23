@@ -9,5 +9,7 @@ export type Product = {
   isAvailable: boolean
 }
 
+export type ProductFirebaseDoc = (Product & { id: string })[]
+
 export interface CreateProductRequest extends Omit<Product, 'id'> {}
 export interface UpdateProductRequest extends Partial<Product> {}

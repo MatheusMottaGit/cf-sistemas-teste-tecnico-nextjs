@@ -1,8 +1,29 @@
 import { addDoc, deleteDoc, doc, updateDoc } from "@firebase/firestore"
-import { CreateProductRequest, UpdateProductRequest } from "@/types/product"
+import { CreateProductRequest, ProductFirebaseDoc, UpdateProductRequest } from "@/types/product"
 import { Product } from "@/types/product"
 import { collection, getDocs } from "@firebase/firestore"
 import { db } from "./config/firebase"
+import { revalidateTag } from "next/cache"
+
+export async function readProducts(): Promise<ProductFirebaseDoc> {
+  const productsCollection = collection(db, "products")
+  const productsDocs = await getDocs(productsCollection)
+
+  const products: ProductFirebaseDoc = productsDocs.docs.map((doc) => {
+    const data = doc.data() as Product
+    
+    return {
+      id: doc.id,
+      name: data.name,
+      price: data.price,
+      category: data.category,
+      description: data.description,
+      isAvailable: data.isAvailable
+    }
+  })
+
+  return products
+}
 
 export async function createProduct(request: CreateProductRequest) {
   const { name, price, category, description, isAvailable } = request
@@ -20,25 +41,6 @@ export async function createProduct(request: CreateProductRequest) {
   } catch (error) {
     throw new Error(error as any)
   }
-}
-
-export async function readProducts(): Promise<(Product & { id: string })[]> {
-  const productsCollection = collection(db, "products")
-  const productsDocs = await getDocs(productsCollection)
-
-  const products: (Product & { id: string })[] = productsDocs.docs.map((doc) => {
-    const data = doc.data() as Product
-    return {
-      id: doc.id,
-      name: data.name,
-      price: data.price,
-      category: data.category,
-      description: data.description,
-      isAvailable: data.isAvailable
-    }
-  })
-
-  return products
 }
 
 export async function updateProduct(id: string, updateRequest: UpdateProductRequest): Promise<void> {

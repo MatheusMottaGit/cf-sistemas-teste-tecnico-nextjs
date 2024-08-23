@@ -1,7 +1,7 @@
 'use client'
 import Button from '@/components/default/button'
 import Input from '@/components/default/input'
-import { signIn } from '@/firebase/sign-in'
+import { signIn } from '@/firebase/auth/sign-in'
 import { CheckCircle, LogIn } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import React, { FormEvent, useState } from 'react'

@@ -1,11 +1,11 @@
 import { app, db } from "@/firebase/config/firebase"
 import { RegisterUserRequest } from "@/types/user"
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth"
+import { createUserWithEmailAndPassword, getAuth, UserCredential } from "firebase/auth"
 import { doc, setDoc } from "firebase/firestore"
 
 const auth = getAuth(app)
 
-export async function signUp(request: RegisterUserRequest) {
+export async function signUp(request: RegisterUserRequest): Promise<UserCredential> {
   let result = null
   const { cpf, email, name, password, phone } = request
 

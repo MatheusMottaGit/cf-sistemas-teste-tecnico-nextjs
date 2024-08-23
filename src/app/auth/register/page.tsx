@@ -1,7 +1,7 @@
 "use client"
 import Button from "@/components/default/button"
 import Input from "@/components/default/input"
-import { signUp } from "@/firebase/sign-up"
+import { signUp } from "@/firebase/auth/sign-up"
 import { RegisterUserRequest } from "@/types/user"
 import { FileText, CheckCircle } from "lucide-react"
 import { useRouter } from "next/navigation"

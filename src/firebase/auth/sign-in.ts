@@ -1,9 +1,9 @@
 import { app } from "@/firebase/config/firebase"
-import { signInWithEmailAndPassword, getAuth } from "firebase/auth"
+import { signInWithEmailAndPassword, getAuth, UserCredential } from "firebase/auth"
 
 const auth = getAuth(app)
 
-export async function signIn(email: string, password: string) {
+export async function signIn(email: string, password: string): Promise<UserCredential> {
   let result = null
 
   try {

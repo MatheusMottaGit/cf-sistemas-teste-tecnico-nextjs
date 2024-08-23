@@ -29,7 +29,7 @@ const ProductsTable = async ({ products }: ProductsTableProps) => {
       </thead>
       
       <tbody>
-        {products.map((product: Product) => {
+        {products.map((product) => {
           return (  
             <tr key={product.id} className="border-b border-zinc-800">
               <td className="py-1.5 text-sm text-zinc-500 font-medium">{product.name}</td>

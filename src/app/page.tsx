@@ -2,11 +2,11 @@ import CreateProductFormModal from "@/components/create-product-form-modal"
 import LogoutButton from "@/components/logout-button"
 import ProductsTable from "@/components/products-table"
 import { readProducts } from "@/firebase/services"
-import { Product } from "@/types/product"
+import { ProductFirebaseDoc } from "@/types/product"
 import { Soup } from "lucide-react"
 
 export default async function Home() {
-  const products: (Product & { id: string })[] = await readProducts()
+  const products: ProductFirebaseDoc = await readProducts()
 
   return (
     <div className="flex min-h-screen flex-col bg-zinc-950">

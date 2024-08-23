@@ -3,7 +3,7 @@ import { LogOut } from "lucide-react"
 import Button from "./default/button"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
-import { logOut } from "@/firebase/log-out"
+import { logOut } from "@/firebase/auth/log-out"
 
 const LogoutButton = () => {
   const router = useRouter()
