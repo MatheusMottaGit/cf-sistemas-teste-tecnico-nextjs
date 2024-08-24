@@ -28,19 +28,6 @@ pnpm dev
   - Telas de Login e Registro
   - Fluxo de autenticação
   - Tabela de produtos, e CRUD (create, read, update e delete)
+  - Listagem e mecanismo de busca dos produtos
 
-  ![alt text](image.png)
-
-## Relatórios do app em produção (Vercel)
-
-- Funcionando:
-```bash
-- Fluxo de autenticação, incluindo lougout
-- Listagem dos produtos
-- Interações com a interface
-```
-- Problemas:
-```bash
-- Nas ações de criar, deletar e editar, os dados da interface não atualizam imediatamente
-- Em desenvolvimento, tudo funciona corretamente
-```
+  ![alt text](image-1.png)

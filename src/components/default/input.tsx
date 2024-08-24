@@ -11,7 +11,7 @@ const Input = ({ label, id, ...props }: InputProps) => {
         </label>
       )}
 
-      <input {...props} className="p-2 bg-transparent rounded-lg text-sm border border-zinc-600 outline-none px-2 text-zinc-300" />
+      <input {...props} className="py-1.5 px-2 bg-transparent rounded-lg text-sm border border-zinc-600 outline-none text-zinc-300" />
     </div>
   )
 }
