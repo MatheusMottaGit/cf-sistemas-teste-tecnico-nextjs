@@ -36,7 +36,7 @@ const DeleteProductFormModal = ({ product }: DeleteProductFormModalProps) => {
       <button
         onClick={openDeleteProductModal}
         type="button"
-        className="mt-2 text-red-500 rounded-md p-1.5 ring-1 transition-colors ring-red-500 hover:bg-red-500 hover:text-white"
+        className="mt-2 text-red-800 rounded-md p-1 ring-1 my-1 transition-colors ring-red-800 hover:bg-red-500 hover:text-white"
       >
         <X className="size-4" />
       </button>

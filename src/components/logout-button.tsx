@@ -19,7 +19,7 @@ const LogoutButton = () => {
   }
 
   return (
-    <button type="button" onClick={signOut} className="flex gap-1 items-center text-red-800 text-sm hover:underline">
+    <button type="button" onClick={signOut} className="flex gap-1 items-center text-red-800 text-sm underline">
       Sair
       <LogOut className="size-4" />
     </button>

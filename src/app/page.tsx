@@ -7,10 +7,10 @@ import { Soup } from "lucide-react"
 
 export default async function Home() {
   const products: ProductFirebaseDoc = await readProducts()
-
+  console.log(products)
   return (
     <div className="flex min-h-screen flex-col bg-zinc-950">
-      <header className="w-full px-16 h-14 flex items-center justify-between border-b border-zinc-700">
+      <header className="w-full px-16 h-14 flex items-end justify-between">
         <div className="bg-teal-500 p-1 shadow text-zinc-900 rounded-md">
           <Soup className="size-5" />
         </div>

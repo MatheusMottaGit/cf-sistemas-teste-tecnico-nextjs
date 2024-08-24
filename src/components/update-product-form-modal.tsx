@@ -59,7 +59,7 @@ const UpdateProductFormModal = ({ product }: UpdateProductFormModalProps) => {
 
   return (
     <div className="relative">
-      <button onClick={openUpdateProductModal} type="button" className="mt-2 text-orange-500 rounded-md p-1.5 ring-1 transition-colors ring-orange-500 hover:bg-orange-500 hover:text-white">
+      <button onClick={openUpdateProductModal} type="button" className="mt-2 text-orange-800 rounded-md p-1 my-1 ring-1 transition-colors ring-orange-800 hover:bg-orange-500 hover:text-white">
         <Edit className="size-4" />
       </button>
 

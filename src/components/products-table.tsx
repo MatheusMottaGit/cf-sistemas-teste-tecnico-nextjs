@@ -40,7 +40,7 @@ const ProductsTable = async ({ products }: ProductsTableProps) => {
               </td>
               <td className="py-1.5 text-sm text-zinc-500 font-medium">{product.description}</td>
               <td>
-                <div className="flex items-end justify-end gap-2 py-1 mb-1.5">
+                <div className="flex items-end justify-end gap-3 py-1 mb-1.5">
                   <UpdateProductFormModal product={product}/>
 
                   <DeleteProductFormModal product={product}/>
