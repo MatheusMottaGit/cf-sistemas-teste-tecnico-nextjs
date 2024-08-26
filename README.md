@@ -29,6 +29,5 @@ pnpm dev
   - Fluxo de autenticação
   - Tabela de produtos, e CRUD (create, read, update e delete)
   - Listagem e mecanismo de busca dos produtos
-- OBS: Em produção, ocorre um longo atraso na criação, edição e exclusão dos produtos
 
   ![alt text](image.png)
