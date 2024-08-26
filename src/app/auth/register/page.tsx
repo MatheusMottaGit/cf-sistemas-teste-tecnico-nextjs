@@ -6,6 +6,7 @@ import { RegisterUserRequest } from "@/types/user"
 import { FileText, CheckCircle, ExternalLink } from "lucide-react"
 import { useRouter } from "next/navigation"
 import React, { FormEvent, useState } from "react"
+import { toast } from "sonner"
 
 const RegisterPage = () => {
   const [isRegistering, setIsRegistering] = useState(false)
@@ -42,6 +43,10 @@ const RegisterPage = () => {
     await signUp(registerUserRequest)
 
     setIsRegistering(false)
+
+    toast.success("Registrado!", {
+      className: "bg-zinc-950 text-zinc-50 border-zinc-700"
+    })
     
     router.push("/auth/login")
   }

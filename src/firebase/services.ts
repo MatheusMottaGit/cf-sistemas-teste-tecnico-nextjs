@@ -23,8 +23,6 @@ export async function readProducts(): Promise<ProductFirebaseDoc> {
   return products
 }
 
-
-
 export async function createProduct(request: CreateProductRequest) {
   const { name, price, category, description, isAvailable } = request
 

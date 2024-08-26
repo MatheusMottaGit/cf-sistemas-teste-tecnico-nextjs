@@ -30,4 +30,4 @@ pnpm dev
   - Tabela de produtos, e CRUD (create, read, update e delete)
   - Listagem e mecanismo de busca dos produtos
 
-  ![alt text](image-1.png)
+  ![alt text](image.png)

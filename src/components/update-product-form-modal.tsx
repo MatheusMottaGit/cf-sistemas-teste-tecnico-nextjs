@@ -66,7 +66,7 @@ const UpdateProductFormModal = ({ product }: UpdateProductFormModalProps) => {
       {isUpdateProductModalOpen && (
         <Modal
           title="Atualizar produto"
-          description={`Produto a ser alterado: ${product.name}`}
+          description={"Veja as nformações sobre o produto abaixo"}
           onCloseModal={closeUpdateProductModal}
         >
           <form onSubmit={editProduct} className="space-y-4">
@@ -85,10 +85,10 @@ const UpdateProductFormModal = ({ product }: UpdateProductFormModalProps) => {
                 onChange={handleSelectCategory}
                 className="border border-zinc-700 rounded-lg text-zinc-300 p-2 bg-transparent focus:outline-none focus:ring-2 focus:ring-teal-500"
               >
-                <option value="starter">Entrada</option>
-                <option value="main">Prato principal</option>
-                <option value="dessert">Sobremesa</option>
-                <option value="drink">Bebida</option>
+                <option className="bg-zinc-950" value="starter">Entrada</option>
+                <option className="bg-zinc-950" value="main">Prato principal</option>
+                <option className="bg-zinc-950" value="dessert">Sobremesa</option>
+                <option className="bg-zinc-950" value="drink">Bebida</option>
               </select>
             </div>
 
@@ -116,14 +116,14 @@ const UpdateProductFormModal = ({ product }: UpdateProductFormModalProps) => {
                 onChange={handleSelectIsAvailable}
                 className="border border-zinc-700 bg-transparent text-zinc-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
               >
-                <option value="true">Disponível</option>
-                <option value="false">Indisponível</option>
+                <option className="bg-zinc-950" value="true">Disponível</option>
+                <option className="bg-zinc-950" value="false">Indisponível</option>
               </select>
             </div>
 
             <div className="flex justify-end">
               <Button isLoading={isUpdating} type="submit">
-                Criar <CheckCircle className="w-5 h-5" />
+                Editar <CheckCircle className="size-4" />
               </Button>
             </div>
           </form>
