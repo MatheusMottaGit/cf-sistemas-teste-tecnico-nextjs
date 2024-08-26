@@ -1,4 +1,3 @@
-"use client"
 import { CheckCircle, Plus } from "lucide-react"
 import { ChangeEvent, FormEvent, useState } from "react"
 import Button from "./default/button"
@@ -11,7 +10,6 @@ const CreateProductFormModal = () => {
   const [isCreateProductModalOpen, setIsCreateProductModalOpen] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState<Categories>("starter")
   const [isAvailable, setIsAvailable] = useState<boolean>(true)
-  const [isCreating, setIsCreating] = useState(false)
 
   function openCreateProductModal() {
     setIsCreateProductModalOpen(true)
@@ -32,8 +30,6 @@ const CreateProductFormModal = () => {
   async function createNewProduct(event: FormEvent<HTMLFormElement>){
     event.preventDefault()
 
-    setIsCreating(true)
-
     const formData = new FormData(event.currentTarget)
 
     const name = formData.get("name")?.toString().trim() || ""
@@ -50,9 +46,7 @@ const CreateProductFormModal = () => {
 
     await createProduct(createProductRequest)
 
-    setIsCreating(false)
-
-    window.location.reload()
+    setIsCreateProductModalOpen(false)
   }
 
   return (
@@ -117,7 +111,7 @@ const CreateProductFormModal = () => {
             </div>
 
             <div className="flex justify-end">
-              <Button isLoading={isCreating} type="submit">
+              <Button type="submit">
                 Criar <CheckCircle className="w-5 h-5" />
               </Button>
             </div>

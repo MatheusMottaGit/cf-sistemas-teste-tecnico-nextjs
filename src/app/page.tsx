@@ -1,3 +1,5 @@
+"use client"
+import { useEffect, useState } from "react"
 import CreateProductFormModal from "@/components/create-product-form-modal"
 import ProductsTable from "@/components/products-table"
 import SearchProductsForm from "@/components/search-products-form"
@@ -5,8 +7,14 @@ import UserHeader from "@/components/user-header"
 import { readProducts } from "@/firebase/services"
 import { ProductFirebaseDoc } from "@/types/product"
 
-export default async function Home() {
-  const products: ProductFirebaseDoc = await readProducts()
+export default function Home() {
+  const [products, setProducts] = useState<ProductFirebaseDoc>([])
+
+  useEffect(() => {
+    const unsubscribe = readProducts(setProducts)
+
+    return () => unsubscribe()
+  }, [])
 
   return (
     <div className="flex min-h-screen flex-col bg-zinc-950">
@@ -22,7 +30,7 @@ export default async function Home() {
         </div>
 
         <div className="flex-1">
-          <ProductsTable products={products}/>
+          <ProductsTable products={products} />
         </div>
       </main>
     </div>

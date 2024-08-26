@@ -1,4 +1,3 @@
-"use client"
 import { Trash2, X } from "lucide-react"
 import { useState } from "react"
 import { Product } from "@/types/product"
@@ -11,7 +10,6 @@ interface DeleteProductFormModalProps {
 
 const DeleteProductFormModal = ({ product }: DeleteProductFormModalProps) => {
   const [isDeleteProductModalOpen, setIsDeleteProductModalOpen] = useState(false)
-  const [isDeleting, setIsDeleting] = useState(false)
   
   function openDeleteProductModal() {
     setIsDeleteProductModalOpen(true)
@@ -22,13 +20,8 @@ const DeleteProductFormModal = ({ product }: DeleteProductFormModalProps) => {
   }
 
   async function removeProduct() {
-    setIsDeleting(true)
-    
     await deleteProduct(product.id)
-
-    setIsDeleting(false)
-
-    window.location.reload()
+    setIsDeleteProductModalOpen(false)
   }
 
   return (
@@ -56,7 +49,7 @@ const DeleteProductFormModal = ({ product }: DeleteProductFormModalProps) => {
               </button>
             </div>
 
-            <Button variant="destructive" isLoading={isDeleting} type="button" onClick={removeProduct}>
+            <Button variant="destructive" type="button" onClick={removeProduct}>
               Excluir <Trash2 className="size-4" />
             </Button>
           </div>

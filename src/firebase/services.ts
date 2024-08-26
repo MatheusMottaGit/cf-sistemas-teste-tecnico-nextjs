@@ -1,26 +1,27 @@
-import { addDoc, deleteDoc, doc, getDocs, updateDoc } from "@firebase/firestore"
+import { addDoc, deleteDoc, doc, onSnapshot, orderBy, query, updateDoc } from "@firebase/firestore"
 import { CreateProductRequest, ProductFirebaseDoc, UpdateProductRequest } from "@/types/product"
 import { Product } from "@/types/product"
 import { collection } from "@firebase/firestore"
 import { db } from "./config/firebase"
 
-export async function readProducts(): Promise<ProductFirebaseDoc> {
-  const productsCollection = collection(db, "products")
-  const productsDocs = await getDocs(productsCollection)
+export function readProducts(setProducts: (products: ProductFirebaseDoc) => void): () => void {
+  const productsCollection = query(collection(db, "products"), orderBy("price"))
 
-  const products: ProductFirebaseDoc = productsDocs.docs.map((doc) => {
-    const { name, price, category, description, isAvailable } = doc.data() as Product
-    return {
-      id: doc.id,
-      name,
-      price,
-      category,
-      description,
-      isAvailable
-    }
+  return onSnapshot(productsCollection, (snapshot) => {
+    const products: ProductFirebaseDoc = snapshot.docs.map((doc) => {
+      const { name, price, category, description, isAvailable } = doc.data() as Product
+      return {
+        id: doc.id,
+        name,
+        price,
+        category,
+        description,
+        isAvailable
+      }
+    })
+
+    setProducts(products)
   })
-
-  return products
 }
 
 export async function createProduct(request: CreateProductRequest): Promise<void> {

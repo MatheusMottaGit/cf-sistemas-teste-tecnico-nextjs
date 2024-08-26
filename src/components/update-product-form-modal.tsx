@@ -1,4 +1,3 @@
-"use client"
 import { CheckCircle, Edit } from "lucide-react"
 import { ChangeEvent, FormEvent, useState } from "react"
 import Button from "./default/button"
@@ -13,8 +12,7 @@ interface UpdateProductFormModalProps {
 
 const UpdateProductFormModal = ({ product }: UpdateProductFormModalProps) => {
   const [isUpdateProductModalOpen, setIsUpdateProductModalOpen] = useState(false)
-  const [isUpdating, setIsUpdating] = useState(false)
-  
+
   const [name, setName] = useState(product.name)
   const [category, setCategory] = useState(product.category)
   const [price, setPrice] = useState(product.price)
@@ -40,8 +38,6 @@ const UpdateProductFormModal = ({ product }: UpdateProductFormModalProps) => {
   async function editProduct(event: FormEvent) {
     event.preventDefault()
 
-    setIsUpdating(true)
-
     const updateProductRequest: UpdateProductRequest = {
       name,
       price,
@@ -52,9 +48,7 @@ const UpdateProductFormModal = ({ product }: UpdateProductFormModalProps) => {
 
     await updateProduct(product.id, {...updateProductRequest})
 
-    setIsUpdating(false)
-
-    window.location.reload()
+    setIsUpdateProductModalOpen(false)
   }
 
   return (
@@ -122,7 +116,7 @@ const UpdateProductFormModal = ({ product }: UpdateProductFormModalProps) => {
             </div>
 
             <div className="flex justify-end">
-              <Button isLoading={isUpdating} type="submit">
+              <Button type="submit">
                 Editar <CheckCircle className="size-4" />
               </Button>
             </div>

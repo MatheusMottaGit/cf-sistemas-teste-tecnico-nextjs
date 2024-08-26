@@ -1,4 +1,3 @@
-"use client"
 import { Search, X } from "lucide-react"
 import Button from "./default/button"
 import Input from "./default/input"

@@ -1,4 +1,3 @@
-"use client"
 import { Product } from '@/types/product'
 import AvailabilityBadge from './availability-badge'
 import UpdateProductFormModal from './update-product-form-modal'

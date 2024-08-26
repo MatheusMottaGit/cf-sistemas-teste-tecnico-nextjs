@@ -1,4 +1,3 @@
-"use client"
 import { useAuthContext } from '@/contexts/auth-context'
 import { logOut } from '@/firebase/auth/log-out'
 import { LogOut, Soup } from 'lucide-react'
