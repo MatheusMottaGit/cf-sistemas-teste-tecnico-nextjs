@@ -4,7 +4,6 @@ import SearchProductsForm from "@/components/search-products-form"
 import UserHeader from "@/components/user-header"
 import { readProducts } from "@/firebase/services"
 import { ProductFirebaseDoc } from "@/types/product"
-import { Soup } from "lucide-react"
 
 export default async function Home() {
   const products: ProductFirebaseDoc = await readProducts()

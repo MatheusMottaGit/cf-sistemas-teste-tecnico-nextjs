@@ -7,7 +7,7 @@ interface ModalProps {
   onCloseModal: () => void
 }
 
-const Modal = ({ title, description, children, onCloseModal }: ModalProps) => {
+const Modal = ({ title, description, children, onCloseModal }: ModalProps) => { // to not repeat this html for all components that uses modal
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
       <div className="bg-zinc-950 shadow-md rounded-lg p-6 w-full max-w-md space-y-6">

@@ -17,11 +17,15 @@ const categories = {
 }
 
 const ProductsTable = ({ products }: ProductsTableProps) => {
-  const searchParams = useSearchParams()
+  const searchParams = useSearchParams() 
 
-  const product = searchParams.get("prod")
+  const searchedProduct = searchParams.get("prod") // search params setted on search product form
 
-  const filtered = product && products.filter((prod) => prod.name.normalize("NFD").toLocaleLowerCase().includes(product)) || []
+  const filteredProducts = searchedProduct
+    ? products.filter((prod) => 
+        prod.name.normalize("NFD").toLocaleLowerCase().includes(searchedProduct)
+      )
+    : products
 
   return (
     <table className="w-full">
@@ -37,54 +41,36 @@ const ProductsTable = ({ products }: ProductsTableProps) => {
       </thead>
       
       <tbody>
-        {product ? (
-          <>
-            {filtered.map((product) => {
-              return (  
-                <tr key={product.id} className="border-b border-zinc-800">
-                  <td className="py-1.5 text-sm text-zinc-500 font-medium">{product.name}</td>
-                  <td className="py-1.5 text-sm text-zinc-500 font-medium">{categories[product.category]}</td>
-                  <td className="py-1.5 text-sm text-zinc-500 font-medium">R${product.price.toFixed(2)}</td>
-                  <td className="py-1.5 text-sm text-zinc-500 font-medium">
-                    <AvailabilityBadge isAvailable={product.isAvailable} />
-                  </td>
-                  <td className="py-1.5 text-sm text-zinc-500 font-medium">{product.description}</td>
-                  <td>
-                    <div className="flex items-end justify-end gap-3 py-1 mb-1.5">
-                      <UpdateProductFormModal product={product}/>
+        {filteredProducts.map((product) => {
+          return (  
+            <tr key={product.id} className="border-b border-zinc-800">
+              <td className="py-1.5 text-sm text-zinc-500 font-medium">{product.name}</td>
+              <td className="py-1.5 text-sm text-zinc-500 font-medium">{categories[product.category]}</td>
+              <td className="py-1.5 text-sm text-zinc-500 font-medium">R${product.price.toFixed(2)}</td>
+              <td className="py-1.5 text-sm text-zinc-500 font-medium">
+                <AvailabilityBadge isAvailable={product.isAvailable} />
+              </td>
+              <td className="py-1.5 text-sm text-zinc-500 font-medium">{product.description}</td>
+              <td>
+                <div className="flex items-end justify-end gap-3 py-1 mb-1.5">
+                  <UpdateProductFormModal product={product}/>
 
-                      <DeleteProductFormModal product={product}/>
-                    </div>
-                  </td>
-                </tr>
-              )
-            })}
-          </>
-        ) : (
-          <>
-            {products.map((product) => {
-              return (  
-                <tr key={product.id} className="border-b border-zinc-800">
-                  <td className="py-1.5 text-sm text-zinc-500 font-medium">{product.name}</td>
-                  <td className="py-1.5 text-sm text-zinc-500 font-medium">{categories[product.category]}</td>
-                  <td className="py-1.5 text-sm text-zinc-500 font-medium">R${product.price.toFixed(2)}</td>
-                  <td className="py-1.5 text-sm text-zinc-500 font-medium">
-                    <AvailabilityBadge isAvailable={product.isAvailable} />
-                  </td>
-                  <td className="py-1.5 text-sm text-zinc-500 font-medium">{product.description}</td>
-                  <td>
-                    <div className="flex items-end justify-end gap-3 py-1 mb-1.5">
-                      <UpdateProductFormModal product={product}/>
-
-                      <DeleteProductFormModal product={product}/>
-                    </div>
-                  </td>
-                </tr>
-              )
-            })}
-          </>
-        )}
+                  <DeleteProductFormModal product={product}/>
+                </div>
+              </td>
+            </tr>
+          )
+        })}
       </tbody>
+      {filteredProducts.length === 0 && (
+        <tfoot>
+          <tr>
+            <td colSpan={6} className="text-center py-4 text-zinc-500">
+              Nenhum produto encontrado... Comece no botão acima!
+            </td>
+          </tr>
+        </tfoot>
+      )}
     </table>
   )
 }

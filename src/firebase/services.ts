@@ -1,4 +1,4 @@
-import { addDoc, deleteDoc, doc, getDocs, onSnapshot, orderBy, query, updateDoc } from "@firebase/firestore"
+import { addDoc, deleteDoc, doc, getDocs, updateDoc } from "@firebase/firestore"
 import { CreateProductRequest, ProductFirebaseDoc, UpdateProductRequest } from "@/types/product"
 import { Product } from "@/types/product"
 import { collection } from "@firebase/firestore"
@@ -23,19 +23,17 @@ export async function readProducts(): Promise<ProductFirebaseDoc> {
   return products
 }
 
-export async function createProduct(request: CreateProductRequest) {
+export async function createProduct(request: CreateProductRequest): Promise<void> {
   const { name, price, category, description, isAvailable } = request
 
   try {
-    const result = await addDoc(collection(db, "products"), {
+    await addDoc(collection(db, "products"), {
       name,
       price,
       category,
       description,
       isAvailable
     })
-
-    return result
   } catch (error) {
     throw new Error(error as any)
   }
@@ -51,5 +49,6 @@ export async function updateProduct(id: string, updateRequest: UpdateProductRequ
 
 export async function deleteProduct(id: string): Promise<void> {
   const docRef = doc(db, "products", id) 
+  
   await deleteDoc(docRef)
 }

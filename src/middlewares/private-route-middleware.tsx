@@ -4,7 +4,7 @@ import { Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import React, { useEffect } from "react"
 
-const PrivateRouteMiddleware = ({ children }: { children: React.ReactNode }) => {
+const PrivateRouteMiddleware = ({ children }: { children: React.ReactNode }) => { // middleware to handle login
   const router = useRouter()
   const { user, isUserLoading } = useAuthContext()
 
