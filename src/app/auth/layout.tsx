@@ -10,7 +10,7 @@ export default function AuthLayout({ children }: Readonly<{ children: React.Reac
         </div>
         <div className="mt-auto">
           <footer className="text-sm">
-            All rights reserved &copy; Nouveau - {new Date().getFullYear()}
+            Todos os direitos reservados &copy; Nouveau - {new Date().getFullYear()}
           </footer>
         </div>
       </div>

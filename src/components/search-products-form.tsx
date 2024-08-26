@@ -45,7 +45,7 @@ const SearchProductsForm = () => {
       </form>
 
       {prodParam && 
-        <Button onClick={onRemoveFilter} variant="outline">
+        <Button onClick={onRemoveFilter} variant="outline" width="xs">
           <X className="size-4" />
         </Button>  
       }

@@ -2,7 +2,7 @@
 import Button from '@/components/default/button'
 import Input from '@/components/default/input'
 import { signIn } from '@/firebase/auth/sign-in'
-import { CheckCircle, LogIn } from 'lucide-react'
+import { CheckCircle, ExternalLink, LogIn } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import React, { FormEvent, useState } from 'react'
 import { toast } from 'sonner'
@@ -11,6 +11,10 @@ const LoginPage = () => {
   const [isLogging, setIsLogging] = useState(false)
 
   const router = useRouter()
+
+  function navigateToRegisterPage() {
+    router.push("/auth/register")
+  }
   
   async function loginUser(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -41,7 +45,7 @@ const LoginPage = () => {
           <LogIn className='text-teal-600 size-6'/>
         </div>
         
-        <span className='text-zinc-400'>Lorem ipsum dolor, sit amet consectetur.</span>
+        <span className='text-zinc-400'>Se atente às informações abaixo.</span>
       </div>
 
       <form onSubmit={loginUser} className='space-y-5'>
@@ -60,7 +64,11 @@ const LoginPage = () => {
         />
 
         <Button type="submit" isLoading={isLogging}>
-          Entrar <CheckCircle className='size-5'/>
+          Entrar <CheckCircle className='size-4'/>
+        </Button>
+
+        <Button onClick={navigateToRegisterPage} type="button" variant='outline'>
+          Não tenho conta <ExternalLink className='size-4'/>
         </Button>
       </form>
     </div>

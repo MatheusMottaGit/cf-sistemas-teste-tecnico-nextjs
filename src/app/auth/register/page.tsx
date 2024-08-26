@@ -3,7 +3,7 @@ import Button from "@/components/default/button"
 import Input from "@/components/default/input"
 import { signUp } from "@/firebase/auth/sign-up"
 import { RegisterUserRequest } from "@/types/user"
-import { FileText, CheckCircle } from "lucide-react"
+import { FileText, CheckCircle, ExternalLink } from "lucide-react"
 import { useRouter } from "next/navigation"
 import React, { FormEvent, useState } from "react"
 
@@ -11,6 +11,10 @@ const RegisterPage = () => {
   const [isRegistering, setIsRegistering] = useState(false)
 
   const router = useRouter()
+
+  function navigateToLoginPage() {
+    router.push("/auth/login")
+  }
 
   async function registerUser(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -39,7 +43,7 @@ const RegisterPage = () => {
 
     setIsRegistering(false)
     
-    router.push("/login")
+    router.push("/auth/login")
   }
 
   return (
@@ -50,7 +54,7 @@ const RegisterPage = () => {
           <FileText className="text-teal-600 size-6"/>
         </div>
         
-        <span className="text-zinc-400">Lorem ipsum dolor, sit amet consectetur.</span>
+        <span className="text-zinc-400">Se atente às informações abaixo.</span>
       </div>
 
       <form onSubmit={registerUser} className="space-y-5">
@@ -97,6 +101,10 @@ const RegisterPage = () => {
 
         <Button type="submit" isLoading={isRegistering}>
           Cadastrar <CheckCircle className="size-5"/>
+        </Button>
+
+        <Button onClick={navigateToLoginPage} type="button" variant='outline'>
+          Já tenho conta <ExternalLink className='size-4'/>
         </Button>
       </form>
     </div>
