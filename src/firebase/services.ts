@@ -7,7 +7,7 @@ import { db } from "./config/firebase"
 export function readProducts(setProducts: (products: ProductFirebaseDoc) => void): () => void {
   const productsCollection = query(collection(db, "products"), orderBy("price"))
 
-  return onSnapshot(productsCollection, (snapshot) => {
+  return onSnapshot(productsCollection, (snapshot) => { // to list realtime data (events)
     const products: ProductFirebaseDoc = snapshot.docs.map((doc) => {
       const { name, price, category, description, isAvailable } = doc.data() as Product
       return {
